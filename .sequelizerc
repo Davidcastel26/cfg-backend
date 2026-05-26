@@ -1,0 +1,14 @@
+const path = require("path");
+
+// One config map, two paths: production runs the compiled JS under dist/
+// (no tsx needed); every other environment runs the TS sources via tsx.
+const isProduction = process.env.NODE_ENV === "production";
+const root = isProduction ? "dist" : "src";
+const configExt = isProduction ? ".js" : ".ts";
+
+module.exports = {
+  config: path.resolve(root, "models", `config${configExt}`),
+  "models-path": path.resolve(root, "models"),
+  "seeders-path": path.resolve(root, "models", "seeders"),
+  "migrations-path": path.resolve(root, "models", "migrations"),
+};
