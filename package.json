@@ -29,6 +29,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.6",
     "date-fns": "^4.3.0",
     "dotenv": "^17.4.2",
     "exceljs": "^4.4.0",
@@ -46,6 +47,7 @@
   },
   "devDependencies": {
     "@redocly/cli": "^2.31.4",
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.9.1",

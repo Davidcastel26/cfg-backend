@@ -1,3 +1,4 @@
+import cors from 'cors';
 import express, { type Express } from 'express';
 import { pinoHttp } from 'pino-http';
 import swaggerUi from 'swagger-ui-express';
@@ -11,6 +12,12 @@ import { buildOpenApiSpec } from './utils/swagger';
 export function createApp(): Express {
   const app = express();
   app.disable('x-powered-by');
+
+  const corsOrigins = process.env.CORS_ORIGIN?.split(',').map((o) => o.trim()).filter(Boolean) ?? [
+    'http://localhost:5173',
+    'http://localhost:4173',
+  ];
+  app.use(cors({ origin: corsOrigins, credentials: true }));
 
   app.use(pinoHttp({ logger }));
   // Only application/json; the import route's express.raw handles octet-stream.
